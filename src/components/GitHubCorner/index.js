@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 // src/components/GitHubCorner/index.js
 import React from 'react';
 import styled from 'styled-components';
@@ -45,4 +46,4 @@ export function GitHubCorner({ projectUrl }) {
       </a>
     </Wrapper>
   );
-} 
+}

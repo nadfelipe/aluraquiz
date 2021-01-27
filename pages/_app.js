@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import Head from 'next/head';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import db from '../db.json';
-import ThemeContext from '../src/contexts/Theme'
+import ThemeContext from '../src/contexts/Theme';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -10,11 +11,9 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    /* New styles */
     display: flex;
     flex-direction: column;
     font-family: 'Lato', sans-serif;
-    // Deixa branco no começo
     color: ${({ theme }) => theme.colors.contrastText};
   }
   html, body {
@@ -25,43 +24,53 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
   }
-`
+`;
 
 const defaultTheme = db.theme;
 
-
 const lightTheme = {
-  "colors": {
-    "primary": "#F2A9A2",
-    "secondary": "#4EA675",
-    "mainBg": "#F0E9D1",
-    "contrastText": "#3E3640",
-    "wrong": "#FF5722",
-    "success": "#4CAF50"
+  colors: {
+    primary: '#F2A9A2',
+    secondary: '#4EA675',
+    mainBg: '#F0E9D1',
+    contrastText: '#3E3640',
+    wrong: '#FF5722',
+    success: '#4CAF50',
   },
-  "borderRadius": "4px"
-}
+  borderRadius: '4px',
+};
 
+// eslint-disable-next-line react/prop-types
 export default function App({ Component, pageProps }) {
-  const [theme, updateTheme] = useState(defaultTheme)
+  const [theme, updateTheme] = useState(defaultTheme);
 
   const handleTheme = () => {
-    updateTheme (theme =>{
+    // eslint-disable-next-line no-shadow
+    updateTheme((theme) => {
       if (theme.colors.primary === '#47BFBF') {
         return lightTheme;
       }
       return defaultTheme;
-    })
-  }
+    });
+  };
 
   return (
-    <ThemeContext.Provider value={{
-      switchTheme: handleTheme,
-    }}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </ThemeContext.Provider>
-  )
+    <>
+      <Head>
+        <title>alura quiz</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" />
+      </Head>
+      <ThemeContext.Provider value={{
+        switchTheme: handleTheme,
+      }}
+      >
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </ThemeContext.Provider>
+    </>
+  );
 }

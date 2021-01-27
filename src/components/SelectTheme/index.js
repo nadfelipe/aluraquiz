@@ -1,17 +1,18 @@
-import styled from 'styled-components'
-import React, { useState, useContext } from 'react';
-import ThemeContext from '../../contexts/Theme'
+import styled from 'styled-components';
+import React, { useContext } from 'react';
+import ThemeContext from '../../contexts/Theme';
 
+// eslint-disable-next-line import/prefer-default-export
 export function ThemeSelect() {
-  const { switchTheme } = useContext(ThemeContext)
+  const { switchTheme } = useContext(ThemeContext);
 
-return (
+  return (
     <CheckBoxWrapper>
       <CheckBox id="switch-flat" type="checkbox" onClick={switchTheme} />
-      <CheckBoxLabel for="switch-flat"></CheckBoxLabel>
+      <CheckBoxLabel for="switch-flat" />
     </CheckBoxWrapper>
-);
-};
+  );
+}
 
 const CheckBoxWrapper = styled.div`
   position: relative;

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 
 function Logo({ className }) {
@@ -33,6 +34,7 @@ Logo.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
+// eslint-disable-next-line import/prefer-default-export
 export const QuizLogo = styled(Logo)`
   margin: auto;
   display: block;

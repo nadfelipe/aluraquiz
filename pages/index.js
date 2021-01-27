@@ -1,6 +1,10 @@
+import React from 'react';
+import { useRouter, useState } from 'next/router';
 import styled from 'styled-components';
 import db from '../db.json';
-import { Footer, GitHubCorner, QuizBackground, QuizLogo, Widget, ThemeSelect  } from '../src/components/index.js';
+import {
+  Footer, GitHubCorner, QuizBackground, QuizLogo, Widget, ThemeSelect,
+} from '../src/components/index';
 
 export const QuizContainer = styled.div`
   width: 100%;
@@ -16,7 +20,10 @@ export const QuizContainer = styled.div`
 `;
 
 export default function Home() {
-  return(
+  const router = useRouter();
+  const [name, setName] = useState('');
+
+  return (
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
         <QuizLogo />
@@ -27,6 +34,22 @@ export default function Home() {
           </Widget.Header>
           <Widget.Content>
             <p>{db.description}</p>
+            <form onSubmit={function pushNameUrl(infosDoEvento) {
+              infosDoEvento.preventDefault();
+              router.push(`/quiz?name=${name}`);
+            }}
+            >
+              <input
+                onChange={function onChangeName(infosDoEvento) {
+                  setName(infosDoEvento.target.value);
+                }}
+                placeholder="Fala aí seu nome!"
+              />
+              <button type="submit" disabled={name.length === 0}>
+                Jogar
+                {name}
+              </button>
+            </form>
           </Widget.Content>
         </Widget>
         <Widget>
