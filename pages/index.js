@@ -1,5 +1,5 @@
-import React from 'react';
-import { useRouter, useState } from 'next/router';
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import db from '../db.json';
 import {
