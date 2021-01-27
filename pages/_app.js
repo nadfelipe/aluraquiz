@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import db from '../db.json';
 import ThemeContext from '../src/contexts/Theme';
+import db from '../db.json';
 
 const GlobalStyle = createGlobalStyle`
   * {
