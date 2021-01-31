@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import db from '../db.json';
+import db from '../../db.json';
 import {
-  QuizBackground, QuizLogo, Widget, Button, QuizContainer, AlternativesForm,
-} from '../src/components/index';
+  QuizBackground, QuizLogo, Widget, Button, QuizContainer, AlternativesForm, BackLinkArrow,
+} from '../../src/components/index';
 
 function LoadingWidget() {
   return (
@@ -77,7 +77,7 @@ function QuestionWidget({
   return (
     <Widget>
       <Widget.Header>
-        {/* <BackLinkArrow href="/" /> */}
+        <BackLinkArrow href="/" />
         <h3>
           {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
         </h3>
@@ -142,8 +142,6 @@ function QuestionWidget({
           <Button type="submit" disabled={!hasAlternativeSelected}>
             Confirmar
           </Button>
-          {isQuestionSubmited && isCorrect && <p>Você acertou</p>}
-          {isQuestionSubmited && !isCorrect && <p>Você errou</p>}
         </AlternativesForm>
       </Widget.Content>
     </Widget>
