@@ -31,7 +31,7 @@ const defaultTheme = db.theme;
 const lightTheme = {
   colors: {
     primary: '#F2A9A2',
-    secondary: '#4EA675',
+    secondary: '#BF5AA4',
     mainBg: '#F0E9D1',
     contrastText: '#3E3640',
     wrong: '#FF5722',
